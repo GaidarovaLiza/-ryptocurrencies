@@ -1,0 +1,89 @@
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.crypto_table {
+  width: 68.75rem;
+  margin: 1.875rem;
+  border-collapse: separate;
+  border-spacing: 0 0.5em;
+  font-size: 1.25rem;
+
+}
+
+.crypto_table thead th {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.crypto_table tbody tr {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 15px 1px rgba(62, 57, 107, 0.07);
+  box-shadow: 0 1px 15px 1px rgba(62, 57, 107, 0.07);
+}
+
+.crypto_table tbody tr td > * {
+  vertical-align: initial;
+}
+
+.crypto_table tbody tr td:first-child {
+  -moz-border-radius: 10px 0 0 10px;
+  -webkit-border-radius: 10px 0 0 10px;
+}
+
+.crypto_table tbody tr td:last-child {
+  -moz-border-radius: 0 10px 10px 0;
+  -webkit-border-radius: 0 10px 10px 0;
+}
+
+.crypto_table tbody tr td img {
+  width: 1.5625rem;
+  height: 1.5625rem;
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .crypto_table {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .crypto_table {
+    width: 100%;
+    align-items: center;
+    font-size: 0.7rem;
+    margin: 0;
+    border-spacing: 0 2em;
+  }
+
+  .plus_icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  .crypto_table tbody tr td img {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 4px;
+  }
+
+
+  .crypto_table thead th {
+    padding-left: 2px;
+    padding-right: 2px;
+    text-align: center;
+  }
+  .crypto_table tbody tr td {
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+
+  }
+  .crypto_table tbody tr {
+    width: 100%;
+  }
+}
