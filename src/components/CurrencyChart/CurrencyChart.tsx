@@ -1,11 +1,11 @@
 import { fetchCryptoStats } from "../../services/api";
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { LineChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis, Line } from "recharts";
 import { formatNumber } from "../../utils/formatters";
 import { StatsContext, StatsContextStateType } from "../../context/stats.context";
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
-export interface CurrencyChartPoint {
+export type CurrencyChartPointType = {
   date: string;
   priceUsd: string;
   time: number;
@@ -28,7 +28,7 @@ export const CurrencyChart = () => {
   const { setErrorMessage, setShouldShowStats } =
     useContext<StatsContextStateType>(StatsContext);
   const [currencyChartData, setCurrencyChartData] =
-    useState<CurrencyChartPoint[]>();
+    useState<CurrencyChartPointType[]>();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const CurrencyChart = () => {
               labelFormatter={(value) => `Day ${value + 1}`}
               formatter={(value: string) => [
                 `$${formatNumber(parseFloat(value))}`,
-                "Price",
+                "Price"
               ]}
             />
             <Line type="monotone" dataKey="priceUsd" stroke="#e73919" activeDot={{ r: 8 }} />
@@ -71,4 +71,4 @@ export const CurrencyChart = () => {
       )}
     </>
   );
-}
+};

@@ -1,13 +1,13 @@
 import { CurrencySummary } from "../../components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
 import { AddToPortfolioModalContext, AddToPortfolioModalContextState } from "../../context/AddToPortfolio.context";
-import CurrencyTableModal from "../../components/shared/currencyModal/CurrencyModal";
+import { CurrencyTableModal } from "../../components/shared/currencyModal/CurrencyModal";
 import { useContext, useState } from "react";
-import s from './Portfolio.module.scss'
+import s from "./Portfolio.module.scss";
 
-export const  AddToPortfolio = (AddToPortfolioProps:CurrencySummary ) => {
+export const AddToPortfolio = (AddToPortfolioProps: CurrencySummary) => {
   const {
     setShouldShowAddToPortfolioModal,
-    setCurrencyToAddToPortfolio,
+    setCurrencyToAddToPortfolio
   } = useContext<AddToPortfolioModalContextState>(AddToPortfolioModalContext);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -23,10 +23,9 @@ export const  AddToPortfolio = (AddToPortfolioProps:CurrencySummary ) => {
     setModalVisible(false);
   };
 
-
   return (
     <div className={s.plus_icon_container}>
-      <button className={s.plus_icon} onClick={openAddToPortfolioModal} >
+      <button className={s.plus_icon} onClick={openAddToPortfolioModal}>
         {/*<img   src={PlusIcon}  alt='plus icon'/>*/} +
       </button>
       <CurrencyTableModal
@@ -38,5 +37,5 @@ export const  AddToPortfolio = (AddToPortfolioProps:CurrencySummary ) => {
       />
     </div>
   );
-}
+};
 

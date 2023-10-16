@@ -1,13 +1,13 @@
-export {}
-// import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import thunk from 'redux-thunk';
-// import {api} from "../services/api";
+export {};// import { configureStore } from "@reduxjs/toolkit";
+// import { setupListeners } from "@reduxjs/toolkit/query/react";
+// import { cryptoApi } from "../services/api";
 //
 // export const store = configureStore({
-//     reducer: {
-//         [api.reducerPath]: cryptoApi.reducer,
-//
-//     },
-//     middleware: (getDefaultMiddleware) =>
-//         getDefaultMiddleware().concat(cryptoApi.middleware).concat(thunk),
+//   reducer: {
+//     [cryptoApi.reducerPath]: cryptoApi.reducer
+//   },
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware().concat(cryptoApi.middleware)
 // });
+//
+// setupListeners(store.dispatch);

@@ -1,13 +1,13 @@
 import { CurrencySummaryWithAmount } from "../../components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
 import { useContext, useEffect, useState } from "react";
 import { PortfolioModalContext, PortfolioModalContextState } from "../../context/portfolioModal.context";
-import PortfolioModal from "../../components/shared/portfolioModal/PortfolioModel";
-import { fetchDataAndUpdateState } from "../../services/api";
+import { PortfolioModal } from "../../components/shared/portfolioModal/PortfolioModel";
 import s from "./Portfolio.module.scss";
 import { formatNumber } from "../../utils/formatters";
 import { CurrencyType } from "../../services/apiTypes";
+import { fetchDataAndUpdateState } from "../../services/api";
 
-function Portfolio() {
+export const Portfolio = () => {
   const {
     lastAddedCurrencyToPortfolio,
     currencyPortfolioRows,
@@ -98,4 +98,4 @@ function Portfolio() {
       <PortfolioModal />
     </div>
   );
-}
+};

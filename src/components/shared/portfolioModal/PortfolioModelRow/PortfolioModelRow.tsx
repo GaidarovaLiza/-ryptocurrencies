@@ -9,7 +9,6 @@ import {
 import { formatNumber } from "../../../../utils/formatters";
 
 
-
 export interface CurrencySummary {
   id: string,
   name: string,
@@ -21,13 +20,13 @@ export interface CurrencySummaryWithAmount extends CurrencySummary {
   amount: number;
 }
 
-function PortfolioModalRow({
-                             id,
-                             name,
-                             symbol,
-                             priceUsd,
-                             amount
-                           }: CurrencySummaryWithAmount) {
+export const PortfolioModalRow = ({
+                                    id,
+                                    name,
+                                    symbol,
+                                    priceUsd,
+                                    amount
+                                  }: CurrencySummaryWithAmount) => {
   // @ts-ignore
   const {
     lastAddedCurrencyToPortfolio,
@@ -64,6 +63,4 @@ function PortfolioModalRow({
       </div>
     </div>
   );
-}
-
-export default PortfolioModalRow;
+};

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCurrencies } from "../services/utils";
-import { fetchCurrencyData } from "../services/api";
 import { CurrencyType } from "../services/apiTypes";
+import { fetchCurrencyData } from "../services/api";
 
 export const useTopRankedCurrencies = () => {
   const [topRankedCurrencyData, setTopRankedCurrencyData] = useState<CurrencyType[]>([]);
@@ -33,7 +33,7 @@ export const useCryptoTableData = () => {
   return cryptoData;
 };
 
-export const useCurrencyStatistics = (id: string | null) => {
+export function useCurrencyStatistics(id: string | null) {
   const [currencyStatisticsData, setCurrencyStatisticsData] = useState<CurrencyType | null>(null);
 
   useEffect(() => {
@@ -51,4 +51,4 @@ export const useCurrencyStatistics = (id: string | null) => {
   }, [id]);
 
   return currencyStatisticsData;
-};
+}
