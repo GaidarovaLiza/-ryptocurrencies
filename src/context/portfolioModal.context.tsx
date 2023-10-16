@@ -1,6 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, {createContext, useState} from 'react';
 import {CurrencySummaryWithAmount} from "../components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
-
 
 export interface PortfolioModalContextState {
     shouldShowPortfolioModal: boolean;
@@ -22,7 +21,7 @@ export const initialCurrencyPortfolioRowState = {
 
 export const PortfolioModalContext = createContext({} as PortfolioModalContextState);
 
-export const PortfolioModalProvider = ({ children }: { children: React.ReactNode }) => {
+export const PortfolioModalProvider = ({children}: { children: React.ReactNode }) => {
     const [shouldShowPortfolioModal, setShouldShowPortfolioModal] = useState<boolean>(false);
     const [
         lastAddedCurrencyToPortfolio,

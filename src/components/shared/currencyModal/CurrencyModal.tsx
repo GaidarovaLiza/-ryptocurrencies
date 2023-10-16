@@ -33,7 +33,6 @@ const CurrencyTableModal: React.FC<CurrencyTableModalProps> = ({visible, onCance
                 priceUsd: parseFloat(selectedCrypto.priceUsd) * parsedValue,
                 amount: parsedValue,
             };
-
             setLastAddedCurrencyToPortfolio(newCurrency);
             onOk(); // Close the modal
             setInputValue('');
