@@ -1,17 +1,19 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import s from "./App.module.scss";
 import { Main } from "./pages/Main/Main";
 import { CurrencyStatistics } from "./pages/CurrencyStatistics/CurrencyStatistics";
 import { Header } from "./components/Header/Header";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
         {(location.pathname === "/"
             || location.pathname === "/currency-statistics"
-            || location.pathname === "/Currency/")
+            || location.pathname === "/Currencies")
           && <Header />}
         <Routes>
           <Route path="/" element={<Main />} />
