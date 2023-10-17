@@ -1,9 +1,10 @@
-import { fetchCryptoStats } from "../../services/api";
 import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { formatNumber } from "../../utils/formatters";
-import { StatsContext, StatsContextStateType } from "../../context/stats.context";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { timeMonthAgo, timeNow } from "./constans";
+import { StatsContext, StatsContextStateType } from "context/stats.context";
+import { fetchCryptoStats } from "services/api";
+import { formatNumber } from "utils/formatters";
 
 export type CurrencyChartPointType = {
   date: string;
@@ -12,10 +13,6 @@ export type CurrencyChartPointType = {
 }
 
 async function fetchCurrencyChartData(currencyId: string | null) {
-  const timeNow = Date.now();
-  const MONTH_MILLISECONDS = 2_592_000_000;
-  const timeMonthAgo = timeNow - MONTH_MILLISECONDS;
-
   try {
     const data = await fetchCryptoStats(currencyId, "d1", timeMonthAgo, timeNow);
     return data;

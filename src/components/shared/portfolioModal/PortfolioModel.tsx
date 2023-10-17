@@ -1,15 +1,15 @@
+import { PortfolioModalContext, PortfolioModalContextStateType } from "context/portfolioModal.context";
 import React, { useContext } from "react";
-import s from "./PortfolioModel.module.scss";
-import { PortfolioModalContext, PortfolioModalContextState } from "../../../context/portfolioModal.context";
-import { PortfolioModalRow } from "./PortfolioModelRow/PortfolioModelRow";
 import { Button } from "../button/Button";
+import s from "./PortfolioModel.module.scss";
+import { PortfolioModalRow } from "./PortfolioModelRow/PortfolioModelRow";
 
 export const PortfolioModal = () => {
   const {
     shouldShowPortfolioModal,
     setShouldShowPortfolioModal,
     currencyPortfolioRows
-  } = useContext<PortfolioModalContextState>(PortfolioModalContext);
+  } = useContext<PortfolioModalContextStateType>(PortfolioModalContext);
 
   const closeModal = () => {
     setShouldShowPortfolioModal(false);

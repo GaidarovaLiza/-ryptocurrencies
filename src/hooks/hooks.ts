@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetchCurrencies } from "../services/utils";
-import { CurrencyType } from "../services/apiTypes";
-import { fetchCurrencyData } from "../services/api";
+import { fetchCurrencyData } from "services/api";
+import { CurrencyType } from "services/apiTypes";
+import { fetchCurrencies } from "services/utils";
 
 export const useTopRankedCurrencies = () => {
   const [topRankedCurrencyData, setTopRankedCurrencyData] = useState<CurrencyType[]>([]);

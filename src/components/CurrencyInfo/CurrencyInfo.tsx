@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useMemo } from "react";
 import s from "./CurrencyInfo.module.scss";
-import { PortfolioModal } from "../shared/portfolioModal/PortfolioModel";
-import { formatNumber } from "../../utils/formatters";
-import { CurrencyChart } from "../CurrencyChart/CurrencyChart";
-import { AddToPortfolio } from "../Portfolio/AddToPortfolio";
-import { Button } from "../shared/button/Button";
+import { formatNumber } from "utils/formatters";
+import { CurrencyChart } from "components/CurrencyChart/CurrencyChart";
+import { Button } from "components/shared/button/Button";
+import { AddToPortfolio } from "components/Portfolio/AddToPortfolio";
+import { PortfolioModal } from "components/shared/portfolioModal/PortfolioModel";
 
 export type CurrencyStatisticsDataType = {
   id: string

@@ -1,9 +1,10 @@
+import { Portfolio } from "components/Portfolio/Portfolio";
+import { TopRankedCurrency } from "components/TopRankedCurrency/TopRankedCurrency";
+import { useTopRankedCurrencies } from "hooks/hooks";
 import { NavLink } from "react-router-dom";
-import { useTopRankedCurrencies } from "../../hooks/hooks";
-import { CurrencyType } from "../../services/apiTypes";
+import { CurrencyType } from "services/apiTypes";
 import s from "./Header.module.scss";
-import { Portfolio } from "../Portfolio/Portfolio";
-import { TopRankedCurrency } from "../TopRankedCurrency/TopRankedCurrency";
+
 
 type TopRankedCurrencyPropsType = {
   id: string;
@@ -28,7 +29,6 @@ export const Header = () => {
     <div className={s.header}>
       <header className={s.navbar}>
         <NavLink to={"/"}>
-          {/*<img className={s.company_logo} alt="" />*/}
         </NavLink>
         <div className={s.navbar_center}>
           {topRankedCurrencyData.map((topRankedCurrency) => {

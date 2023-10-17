@@ -1,9 +1,9 @@
-import { CurrencySummaryType } from "../shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
-import { AddToPortfolioModalContext, AddToPortfolioModalContextStateType } from "../../context/addToPortfolio.context";
-import { CurrencyTableModal } from "../shared/currencyModal/CurrencyModal";
+import { Button } from "components/shared/button/Button";
+import { CurrencyTableModal } from "components/shared/currencyModal/CurrencyModal";
+import { CurrencySummaryType } from "components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
+import { AddToPortfolioModalContext, AddToPortfolioModalContextStateType } from "context/addToPortfolio.context";
 import { useContext, useState } from "react";
 import s from "./Portfolio.module.scss";
-import { Button } from "../shared/button/Button";
 
 export const AddToPortfolio = (AddToPortfolioProps: CurrencySummaryType) => {
   const {

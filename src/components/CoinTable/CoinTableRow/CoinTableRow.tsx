@@ -1,10 +1,11 @@
+import { Button } from "components/shared/button/Button";
+import { Routes } from "config/routes";
 import React, { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { CurrencyType } from "services/apiTypes";
+import { formatNumber } from "utils/formatters";
 import s from "./CoinTableRow.module.scss";
-import { CurrencyType } from "../../../services/apiTypes";
-import { formatNumber } from "../../../utils/formatters";
-import { Routes } from "../../../config/routes";
-import { Button } from "../../shared/button/Button";
+
 
 export type TableCellLinkPropsType = {
   to: string;

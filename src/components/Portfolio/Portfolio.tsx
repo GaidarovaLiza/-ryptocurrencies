@@ -1,11 +1,11 @@
-import { CurrencySummaryWithAmountType } from "../shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
+import { PortfolioModal } from "components/shared/portfolioModal/PortfolioModel";
+import { CurrencySummaryWithAmountType } from "components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
+import { PortfolioModalContext, PortfolioModalContextStateType } from "context/portfolioModal.context";
 import { useContext, useEffect, useState } from "react";
-import { PortfolioModalContext, PortfolioModalContextState } from "../../context/portfolioModal.context";
-import { PortfolioModal } from "../shared/portfolioModal/PortfolioModel";
+import { fetchDataAndUpdateState } from "services/api";
+import { CurrencyType } from "services/apiTypes";
+import { formatNumber } from "utils/formatters";
 import s from "./Portfolio.module.scss";
-import { formatNumber } from "../../utils/formatters";
-import { CurrencyType } from "../../services/apiTypes";
-import { fetchDataAndUpdateState } from "../../services/api";
 
 export const Portfolio = () => {
   const {
@@ -13,7 +13,7 @@ export const Portfolio = () => {
     currencyPortfolioRows,
     setCurrencyPortfolioRows,
     setShouldShowPortfolioModal
-  } = useContext<PortfolioModalContextState>(PortfolioModalContext);
+  } = useContext<PortfolioModalContextStateType>(PortfolioModalContext);
 
   const [currentCurrencyData, setCurrentCurrencyData] = useState<CurrencyType[]>([]);
   const [currentTotalPrice, setCurrentTotalPrice] = useState<number>(0);

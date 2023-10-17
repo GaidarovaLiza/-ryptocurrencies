@@ -1,8 +1,8 @@
+import { PortfolioModalContext } from "context/portfolioModal.context";
 import React, { ChangeEvent, useContext, useState } from "react";
-import s from "./CurrencyModal.module.scss";
-import { PortfolioModalContext } from "../../../context/portfolioModal.context";
-import { CurrencyType } from "../../../services/apiTypes";
+import { CurrencyType } from "services/apiTypes";
 import { Button } from "../button/Button";
+import s from "./CurrencyModal.module.scss";
 
 export type CurrencyTableModalPropsType = {
   visible: boolean;
@@ -39,7 +39,7 @@ export const CurrencyTableModal: React.FC<CurrencyTableModalPropsType> = ({
         amount: parsedValue
       };
       setLastAddedCurrencyToPortfolio(newCurrency);
-      onOk(); // Close the modal
+      onOk();
       setInputValue("");
     } else {
       console.error("Input value is not within the allowed range.");

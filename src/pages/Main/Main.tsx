@@ -1,5 +1,5 @@
+import { CoinTable } from "components/CoinTable/CoinTable";
 import s from "./Main.module.scss";
-import { CoinTable } from "../../components/CoinTable/CoinTable";
 
 export const Main = () => {
   return (

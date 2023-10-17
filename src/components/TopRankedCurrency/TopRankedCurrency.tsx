@@ -1,7 +1,7 @@
+import { Routes } from "config/routes";
 import { Link } from "react-router-dom";
-import { formatNumber } from "../../utils/formatters";
+import { formatNumber } from "utils/formatters";
 import s from "./TopRankedCurrency.module.scss";
-import { Routes } from "../../config/routes";
 
 type TopRankedCurrencyPropsType = {
   id: string,

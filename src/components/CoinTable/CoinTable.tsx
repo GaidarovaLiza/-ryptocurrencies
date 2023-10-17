@@ -1,11 +1,12 @@
+import { Pagination } from "components/Pagination/Pagination";
+import { CurrencyTableModal } from "components/shared/currencyModal/CurrencyModal";
+import { Loader } from "components/shared/loader/Loader";
 import { useEffect, useState } from "react";
-import { CurrencyType } from "../../services/apiTypes";
-import { fetchCurrencies } from "../../services/utils";
+import { CurrencyType } from "services/apiTypes";
+import { fetchCurrencies } from "services/utils";
 import s from "./CoinTable.module.scss";
 import { CoinTableRow } from "./CoinTableRow/CoinTableRow";
-import { Loader } from "../shared/loader/Loader";
-import { Pagination } from "../Pagination/Pagination";
-import { CurrencyTableModal } from "../shared/currencyModal/CurrencyModal";
+
 
 export const CoinTable = () => {
   const [cryptoData, setCryptoData] = useState<CurrencyType[]>([]);

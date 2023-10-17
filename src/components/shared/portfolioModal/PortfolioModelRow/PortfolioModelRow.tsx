@@ -33,7 +33,7 @@ export const PortfolioModalRow = ({
     setLastAddedCurrencyToPortfolio,
     currencyPortfolioRows,
     setCurrencyPortfolioRows,
-    closeModal // Assuming you have a function to close the modal
+    closeModal
   } = useContext<PortfolioModalContextStateType>(PortfolioModalContext);
 
   const removePortfolioRow = (): void => {
