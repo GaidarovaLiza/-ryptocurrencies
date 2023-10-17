@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { PortfolioModalProvider } from "./context/portfolioModal.context";
 import { BrowserRouter } from "react-router-dom";
 import { AddToPortfolioModalProvider } from "./context/addToPortfolio.context";
+import { StatsProvider } from "./context/stats.context";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,7 +15,9 @@ root.render(
   <BrowserRouter>
     <PortfolioModalProvider>
       <AddToPortfolioModalProvider>
-        <App />
+        <StatsProvider>
+          <App />
+        </StatsProvider>
       </AddToPortfolioModalProvider>
     </PortfolioModalProvider>
   </BrowserRouter>

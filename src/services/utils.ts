@@ -1,7 +1,6 @@
 import { fetchCryptoData } from "./api";
 import { CurrencyType } from "./apiTypes";
 
-
 export async function fetchCurrencies(isTopRanked: boolean = false, limit: number = 10, offset: number = 0): Promise<CurrencyType[]> {
   try {
     const data = await fetchCryptoData({ limit, offset });
@@ -11,7 +10,8 @@ export async function fetchCurrencies(isTopRanked: boolean = false, limit: numbe
     } else {
       return data.data;
     }
-  } catch (error) {
+  } catch
+    (error) {
     console.error("An error occurred:", error);
     return [];
   }

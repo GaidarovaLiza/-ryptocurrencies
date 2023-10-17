@@ -1,11 +1,15 @@
 import axios from "axios";
 import { SetStateAction } from "react";
-import { CurrencyType } from "./apiTypes";
+import { CurrenciesType, CurrencyType } from "./apiTypes";
+import { CurrencyChartPointType } from "../components/CurrencyChart/CurrencyChart";
 
 export const api = "https://api.coincap.io/v2/";
 const assetsEndpoint = "assets";
 
-export const fetchCryptoData = async ({ limit, offset }: { limit: number; offset: number }) => {
+export const fetchCryptoData = async ({
+                                        limit,
+                                        offset
+                                      }: { limit: number; offset: number }): Promise<CurrenciesType> => {
   try {
     const response = await axios.get(`${api}${assetsEndpoint}`, {
       params: {
@@ -20,7 +24,7 @@ export const fetchCryptoData = async ({ limit, offset }: { limit: number; offset
   }
 };
 
-export const fetchCryptoStats = async (id: string | null, interval: string, start: number, end: number) => {
+export const fetchCryptoStats = async (id: string | null, interval: string, start: number, end: number): Promise<CurrencyChartPointType[]> => {
   try {
     const response = await axios.get(`${api}${assetsEndpoint}/${id}/history`, {
       params: {
@@ -36,11 +40,9 @@ export const fetchCryptoStats = async (id: string | null, interval: string, star
   }
 };
 
-export function fetchDataAndUpdateState(ids: any[], setCurrentCurrencyData: {
-  (value:
-     SetStateAction<CurrencyType[]>): void; (arg0: any): void;
-}) {
-  axios.get(`${api}${assetsEndpoint}`, {
+export function fetchDataAndUpdateState(ids: string[], setCurrentCurrencyData:
+  (value: SetStateAction<CurrencyType[]>) => void) {
+  axios.get<CurrenciesType>(`${api}${assetsEndpoint}`, {
     params: {
       ids:
         ids.join(",")
@@ -51,13 +53,14 @@ export function fetchDataAndUpdateState(ids: any[], setCurrentCurrencyData: {
   });
 }
 
-export async function fetchCurrencyData(id: unknown) {
+export async function fetchCurrencyData(id: string | null): Promise<CurrencyType> {
   try {
     const response = await axios.get(`${api}${assetsEndpoint}`, {
       params: {
         ids: id
       }
     });
+    console.log(response.data.data[0]);
     return response.data.data[0];
   } catch (error) {
     throw error;

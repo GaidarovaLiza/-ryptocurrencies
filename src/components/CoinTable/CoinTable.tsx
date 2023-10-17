@@ -1,37 +1,22 @@
 import { Pagination } from "components/Pagination/Pagination";
 import { CurrencyTableModal } from "components/shared/currencyModal/CurrencyModal";
 import { Loader } from "components/shared/loader/Loader";
-import { useEffect, useState } from "react";
+import { memo, useState } from "react";
 import { CurrencyType } from "services/apiTypes";
-import { fetchCurrencies } from "services/utils";
 import s from "./CoinTable.module.scss";
 import { CoinTableRow } from "./CoinTableRow/CoinTableRow";
+import { useCryptoData } from "../../pages/Main/hooks";
 
-
-export const CoinTable = () => {
-  const [cryptoData, setCryptoData] = useState<CurrencyType[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export const CoinTable = memo(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCrypto, setSelectedCrypto] = useState<CurrencyType | null>(null);
-  const [totalPages, setTotalPages] = useState<number>(1);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const data = await fetchCurrencies(false, 10, (currentPage - 1) * 10);
-        setCryptoData(data);
-        const calculatedTotalPages = Math.ceil(data.length);
-        setTotalPages(calculatedTotalPages);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("An error occurred:", error);
-        setIsLoading(false);
-      }
-    }
-
-    fetchData();
-  }, [currentPage]);
+  const {
+    cryptoData,
+    isLoading,
+    totalPages,
+    currentPage,
+    setCurrentPage
+  } = useCryptoData();
 
   const handlePrevPaginationTabClick = () => {
     if (currentPage !== 1) {
@@ -104,4 +89,4 @@ export const CoinTable = () => {
       />
     </div>
   );
-};
+});
