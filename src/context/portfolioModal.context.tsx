@@ -1,13 +1,13 @@
 import React, {createContext, useState} from 'react';
-import {CurrencySummaryWithAmount} from "../components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
+import {CurrencySummaryWithAmountType} from "../components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
 
-export interface PortfolioModalContextState {
+export type PortfolioModalContextStateType = {
     shouldShowPortfolioModal: boolean;
     setShouldShowPortfolioModal: React.Dispatch<React.SetStateAction<boolean>>;
-    lastAddedCurrencyToPortfolio: CurrencySummaryWithAmount;
-    setLastAddedCurrencyToPortfolio: React.Dispatch<React.SetStateAction<CurrencySummaryWithAmount>>;
-    currencyPortfolioRows: CurrencySummaryWithAmount[];
-    setCurrencyPortfolioRows: React.Dispatch<React.SetStateAction<CurrencySummaryWithAmount[]>>;
+    lastAddedCurrencyToPortfolio: CurrencySummaryWithAmountType;
+    setLastAddedCurrencyToPortfolio: React.Dispatch<React.SetStateAction<CurrencySummaryWithAmountType>>;
+    currencyPortfolioRows: CurrencySummaryWithAmountType[];
+    setCurrencyPortfolioRows: React.Dispatch<React.SetStateAction<CurrencySummaryWithAmountType[]>>;
     closeModal: () => void;
 }
 
@@ -19,15 +19,15 @@ export const initialCurrencyPortfolioRowState = {
     amount: 0,
 };
 
-export const PortfolioModalContext = createContext({} as PortfolioModalContextState);
+export const PortfolioModalContext = createContext({} as PortfolioModalContextStateType);
 
 export const PortfolioModalProvider = ({children}: { children: React.ReactNode }) => {
     const [shouldShowPortfolioModal, setShouldShowPortfolioModal] = useState<boolean>(false);
     const [
         lastAddedCurrencyToPortfolio,
         setLastAddedCurrencyToPortfolio,
-    ] = useState<CurrencySummaryWithAmount>(initialCurrencyPortfolioRowState);
-    const [currencyPortfolioRows, setCurrencyPortfolioRows] = useState<CurrencySummaryWithAmount[]>([]);
+    ] = useState<CurrencySummaryWithAmountType>(initialCurrencyPortfolioRowState);
+    const [currencyPortfolioRows, setCurrencyPortfolioRows] = useState<CurrencySummaryWithAmountType[]>([]);
 
     const closeModal = () => {
         setShouldShowPortfolioModal(false);

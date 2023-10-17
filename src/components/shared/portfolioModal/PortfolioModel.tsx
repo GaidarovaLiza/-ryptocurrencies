@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import s from "./PortfolioModel.module.scss";
 import { PortfolioModalContext, PortfolioModalContextState } from "../../../context/portfolioModal.context";
 import { PortfolioModalRow } from "./PortfolioModelRow/PortfolioModelRow";
+import { Button } from "../button/Button";
 
 export const PortfolioModal = () => {
   const {
@@ -29,7 +30,7 @@ export const PortfolioModal = () => {
             : <div className={s.empty_portfolio}>Portfolio is Empty</div>
           }
         </div>
-        <button className={s.cancel_button} onClick={closeModal}>Cancel</button>
+        <Button name={"Cancel"} styles={s.cancel_button} callback={closeModal} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import s from "./CoinTableRow.module.scss";
 import { CurrencyType } from "../../../services/apiTypes";
 import { formatNumber } from "../../../utils/formatters";
 import { Routes } from "../../../config/routes";
+import { Button } from "../../shared/button/Button";
 
 export type TableCellLinkPropsType = {
   to: string;
@@ -60,10 +61,7 @@ export const CoinTableRow = ({ crypto, showModal }: CryptoTableRowPropsType) => 
         </TableCellLink>
       </td>
       <td>
-        <button className={s.plus_icon} onClick={() => showModal(crypto)}>
-          +
-          <img alt="plus icon" />
-        </button>
+        <Button name={"Add"} styles={s.add_button} callback={() => showModal(crypto)} />
       </td>
     </tr>
   );

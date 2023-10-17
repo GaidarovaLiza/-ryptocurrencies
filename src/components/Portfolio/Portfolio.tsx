@@ -1,7 +1,7 @@
-import { CurrencySummaryWithAmount } from "../../components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
+import { CurrencySummaryWithAmountType } from "../shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
 import { useContext, useEffect, useState } from "react";
 import { PortfolioModalContext, PortfolioModalContextState } from "../../context/portfolioModal.context";
-import { PortfolioModal } from "../../components/shared/portfolioModal/PortfolioModel";
+import { PortfolioModal } from "../shared/portfolioModal/PortfolioModel";
 import s from "./Portfolio.module.scss";
 import { formatNumber } from "../../utils/formatters";
 import { CurrencyType } from "../../services/apiTypes";
@@ -40,7 +40,7 @@ export const Portfolio = () => {
 
   useEffect((): void => {
     const storedPortfolioData = localStorage.getItem("currencyPortfolioRows");
-    const portfolioData: CurrencySummaryWithAmount[] = storedPortfolioData ? JSON.parse(storedPortfolioData) : [];
+    const portfolioData: CurrencySummaryWithAmountType[] = storedPortfolioData ? JSON.parse(storedPortfolioData) : [];
     const existingRow = portfolioData.find(row => row.id === lastAddedCurrencyToPortfolio.id);
 
     if (existingRow) {
@@ -73,8 +73,8 @@ export const Portfolio = () => {
   useEffect((): void => {
     setCurrentTotalPrice(currentCurrencyData.reduce((acc, curr) => {
       const currencyPortfolioRow = currencyPortfolioRows && currencyPortfolioRows.find(row => row.id === curr.id);
-      const currentCurrencySummaryWithAmountAmount = currencyPortfolioRow ? currencyPortfolioRow.amount : 0;
-      return acc + parseFloat(curr.priceUsd) * currentCurrencySummaryWithAmountAmount;
+      const currentCurrencySummaryWithAmountTypeAmount = currencyPortfolioRow ? currencyPortfolioRow.amount : 0;
+      return acc + parseFloat(curr.priceUsd) * currentCurrencySummaryWithAmountTypeAmount;
     }, 0));
   }, [currencyPortfolioRows, currentCurrencyData]);
 

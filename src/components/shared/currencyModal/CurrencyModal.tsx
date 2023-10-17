@@ -2,6 +2,7 @@ import React, { ChangeEvent, useContext, useState } from "react";
 import s from "./CurrencyModal.module.scss";
 import { PortfolioModalContext } from "../../../context/portfolioModal.context";
 import { CurrencyType } from "../../../services/apiTypes";
+import { Button } from "../button/Button";
 
 export type CurrencyTableModalPropsType = {
   visible: boolean;
@@ -65,8 +66,8 @@ export const CurrencyTableModal: React.FC<CurrencyTableModalPropsType> = ({
           onChange={handleInput}
         />
         <div className={s.modalButtons}>
-          <button className={s.modalButtonConfirm} onClick={handleOk}> Confirm</button>
-          <button className={s.modalButtonCancel} onClick={handleCancel}>Cancel</button>
+          <Button name={"Confirm"} styles={s.modalButtonConfirm} callback={handleOk} />
+          <Button name={"Cancel"} styles={s.modalButtonCancel} callback={handleCancel} />
         </div>
       </div>
     </div>

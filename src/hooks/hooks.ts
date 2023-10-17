@@ -18,22 +18,7 @@ export const useTopRankedCurrencies = () => {
   return topRankedCurrencyData;
 };
 
-
-export const useCryptoTableData = () => {
-  const [cryptoData, setCryptoData] = useState<CurrencyType[]>([]);
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchCurrencies();
-      setCryptoData(data);
-    }
-
-    fetchData();
-  }, []);
-
-  return cryptoData;
-};
-
-export function useCurrencyStatistics(id: string | null) {
+export const useCurrencyStatistics = (id: string | null) => {
   const [currencyStatisticsData, setCurrencyStatisticsData] = useState<CurrencyType | null>(null);
 
   useEffect(() => {
@@ -51,4 +36,4 @@ export function useCurrencyStatistics(id: string | null) {
   }, [id]);
 
   return currencyStatisticsData;
-}
+};

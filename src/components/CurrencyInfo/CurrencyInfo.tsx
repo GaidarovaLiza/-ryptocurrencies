@@ -4,7 +4,8 @@ import s from "./CurrencyInfo.module.scss";
 import { PortfolioModal } from "../shared/portfolioModal/PortfolioModel";
 import { formatNumber } from "../../utils/formatters";
 import { CurrencyChart } from "../CurrencyChart/CurrencyChart";
-import { AddToPortfolio } from "../../stories/portfolio/AddToPortfolio";
+import { AddToPortfolio } from "../Portfolio/AddToPortfolio";
+import { Button } from "../shared/button/Button";
 
 export type CurrencyStatisticsDataType = {
   id: string
@@ -76,14 +77,12 @@ export const CurrencyInfo = ({ currencyStatisticsData }: { currencyStatisticsDat
             </div>
             <div className={s.buttons_container}>
               <a href={currencyStatisticsData.explorer}>
-                <button className={s.explorer_button}>
-                  More Details
-                </button>
+                <Button name={"More Details"} styles={s.explorer_button} />
               </a>
               {currencySummary && <AddToPortfolio {...currencySummary} />}
               <PortfolioModal />
               <NavLink className={s.link} to={"/"}>
-                <button className={s.adaptive_back_button}> Back</button>
+                <Button name={"Back"} styles={s.explorer_button} />
               </NavLink>
             </div>
           </>

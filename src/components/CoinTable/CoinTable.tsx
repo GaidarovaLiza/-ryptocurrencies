@@ -3,7 +3,7 @@ import { CurrencyType } from "../../services/apiTypes";
 import { fetchCurrencies } from "../../services/utils";
 import s from "./CoinTable.module.scss";
 import { CoinTableRow } from "./CoinTableRow/CoinTableRow";
-import { Loader } from "../Loader/Loader";
+import { Loader } from "../shared/loader/Loader";
 import { Pagination } from "../Pagination/Pagination";
 import { CurrencyTableModal } from "../shared/currencyModal/CurrencyModal";
 

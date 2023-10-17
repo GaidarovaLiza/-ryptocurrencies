@@ -1,24 +1,24 @@
 import React, { useContext } from "react";
-
 import s from "./PortfolioModelRow.module.scss";
 import {
   initialCurrencyPortfolioRowState,
   PortfolioModalContext,
-  PortfolioModalContextState
+  PortfolioModalContextStateType
 } from "../../../../context/portfolioModal.context";
 import { formatNumber } from "../../../../utils/formatters";
+import { Button } from "../../button/Button";
 
 
-export interface CurrencySummary {
+export type CurrencySummaryType = {
   id: string,
   name: string,
   symbol: string,
   priceUsd: number,
 }
 
-export interface CurrencySummaryWithAmount extends CurrencySummary {
+export type CurrencySummaryWithAmountType = CurrencySummaryType & {
   amount: number;
-}
+};
 
 export const PortfolioModalRow = ({
                                     id,
@@ -26,7 +26,7 @@ export const PortfolioModalRow = ({
                                     symbol,
                                     priceUsd,
                                     amount
-                                  }: CurrencySummaryWithAmount) => {
+                                  }: CurrencySummaryWithAmountType) => {
   // @ts-ignore
   const {
     lastAddedCurrencyToPortfolio,
@@ -34,7 +34,7 @@ export const PortfolioModalRow = ({
     currencyPortfolioRows,
     setCurrencyPortfolioRows,
     closeModal // Assuming you have a function to close the modal
-  } = useContext<PortfolioModalContextState>(PortfolioModalContext);
+  } = useContext<PortfolioModalContextStateType>(PortfolioModalContext);
 
   const removePortfolioRow = (): void => {
     const notRemovedPortfolioRows = currencyPortfolioRows.filter((row) => row.id !== id);
@@ -58,7 +58,7 @@ export const PortfolioModalRow = ({
           </div>
         </div>
         <div className={s.remove_button_container}>
-          <button className={s.remove_currency_button} onClick={() => removePortfolioRow()}>Remove</button>
+          <Button name={"Remove"} styles={s.remove_currency_button} callback={() => removePortfolioRow()} />
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
-import { CurrencySummary } from "components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
+import { CurrencySummaryType } from "components/shared/portfolioModal/PortfolioModelRow/PortfolioModelRow";
 import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
 
-export interface AddToPortfolioModalContextState {
+export type AddToPortfolioModalContextStateType = {
   shouldShowAddToPortfolioModal: boolean;
   setShouldShowAddToPortfolioModal: Dispatch<SetStateAction<boolean>>;
-  currencyToAddToPortfolio: CurrencySummary;
-  setCurrencyToAddToPortfolio: Dispatch<SetStateAction<CurrencySummary>>;
+  currencyToAddToPortfolio: CurrencySummaryType;
+  setCurrencyToAddToPortfolio: Dispatch<SetStateAction<CurrencySummaryType>>;
 }
 
 export const initialAddToPortfolioModalState = {
@@ -15,11 +15,11 @@ export const initialAddToPortfolioModalState = {
   priceUsd: 0,
   amount: 0
 };
-export const AddToPortfolioModalContext = createContext({} as AddToPortfolioModalContextState);
+export const AddToPortfolioModalContext = createContext({} as AddToPortfolioModalContextStateType);
 
 export const AddToPortfolioModalProvider = ({ children }: { children: ReactNode }) => {
   const [shouldShowAddToPortfolioModal, setShouldShowAddToPortfolioModal] = useState<boolean>(false);
-  const [currencyToAddToPortfolio, setCurrencyToAddToPortfolio] = useState<CurrencySummary>(initialAddToPortfolioModalState);
+  const [currencyToAddToPortfolio, setCurrencyToAddToPortfolio] = useState<CurrencySummaryType>(initialAddToPortfolioModalState);
 
   const value = {
     shouldShowAddToPortfolioModal,

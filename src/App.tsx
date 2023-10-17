@@ -11,9 +11,8 @@ function App() {
       <div className={s.wrapper}>
         <Layout />
         <Routes>
-          <Route path="/etaCar-test" element={<Main />} />
+          <Route path="/" element={<Main />} />
           <Route path="/currency-statistics" element={<CurrencyStatistics />} />
-          {/*<Route path='*' element={<ErrorPage />} />*/}
         </Routes>
       </div>
     </div>

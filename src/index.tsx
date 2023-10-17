@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { PortfolioModalProvider } from "./context/portfolioModal.context";
 import { BrowserRouter } from "react-router-dom";
-import { AddToPortfolioModalProvider } from "./context/AddToPortfolio.context";
+import { AddToPortfolioModalProvider } from "./context/addToPortfolio.context";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

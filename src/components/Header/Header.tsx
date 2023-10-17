@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useTopRankedCurrencies } from "../../hooks/hooks";
 import { CurrencyType } from "../../services/apiTypes";
 import s from "./Header.module.scss";
-import { Portfolio } from "../../stories/portfolio/Portfolio";
+import { Portfolio } from "../Portfolio/Portfolio";
 import { TopRankedCurrency } from "../TopRankedCurrency/TopRankedCurrency";
 
 type TopRankedCurrencyPropsType = {
