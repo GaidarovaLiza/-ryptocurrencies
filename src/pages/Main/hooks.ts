@@ -1,6 +1,6 @@
 import { CurrencyType } from "services/apiTypes";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { fetchCurrencies } from "../../services/utils";
+import { fetchCurrencies } from "services/utils";
 
 type CustomHookReturnType = {
   cryptoData: CurrencyType[];
