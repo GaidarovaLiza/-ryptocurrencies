@@ -8,7 +8,7 @@ export const Layout = () => {
 
   return (
     <>
-      {(location.pathname === "/" || location.pathname === "/currency-statistics" || location.pathname === "/etaCar-test/") &&
+      {(location.pathname === "/" || location.pathname === "/currency-statistics" || location.pathname === "/Currencies") &&
         <Header />}
       <Error />
     </>

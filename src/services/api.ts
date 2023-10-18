@@ -6,6 +6,18 @@ import { CurrencyChartPointType } from "../components/CurrencyChart/CurrencyChar
 export const api = "https://api.coincap.io/v2/";
 const assetsEndpoint = "assets";
 
+export const fetchCryptoAssets = async (params: { limit: number; offset: number }): Promise<CurrenciesType> => {
+  try {
+    const response = await axios.get(`${api}${assetsEndpoint}`, {
+      params: params
+    });
+    return response.data;
+  } catch (error) {
+    console.error("An error occurred:", error);
+    throw error;
+  }
+};
+
 export const fetchCryptoData = async ({
                                         limit,
                                         offset
@@ -40,28 +52,25 @@ export const fetchCryptoStats = async (id: string | null, interval: string, star
   }
 };
 
-export function fetchDataAndUpdateState(ids: string[], setCurrentCurrencyData:
-  (value: SetStateAction<CurrencyType[]>) => void) {
-  axios.get<CurrenciesType>(`${api}${assetsEndpoint}`, {
-    params: {
-      ids:
-        ids.join(",")
-    }
-  }).then(res => {
-    setCurrentCurrencyData(res.data.data);
-  }).catch(err => {
-  });
+export function fetchDataAndUpdateState(ids: string[], setCurrentCurrencyData: (value: SetStateAction<CurrencyType[]>) => void) {
+  fetchCryptoAssets({ limit: ids.length, offset: 0 })
+    .then((response) => {
+      setCurrentCurrencyData(response.data);
+    })
+    .catch((error) => {
+      console.error("An error occurred:", error);
+    });
 }
 
 export async function fetchCurrencyData(id: string | null): Promise<CurrencyType> {
   try {
-    const response = await axios.get(`${api}${assetsEndpoint}`, {
-      params: {
-        ids: id
-      }
-    });
-    console.log(response.data.data[0]);
-    return response.data.data[0];
+    const response = await fetchCryptoAssets({ limit: 1, offset: 0 });
+    const currency = response?.data?.find((item: CurrencyType) => item.id === id);
+    if (currency) {
+      return currency;
+    } else {
+      throw new Error("Currency not found");
+    }
   } catch (error) {
     throw error;
   }

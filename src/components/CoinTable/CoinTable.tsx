@@ -104,6 +104,7 @@ export const CoinTable = memo(() => {
             <th scope="col">Logo</th>
             <th scope="col">Name
               <input
+                className={s.search_input}
                 type="text"
                 value={searchQuery}
                 onChange={handleSearchInputChange}

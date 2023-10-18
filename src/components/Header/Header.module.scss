@@ -39,11 +39,6 @@
   justify-content: space-between;
 }
 
-.company_logo {
-  width: 13.75rem;
-  height: 5rem;
-}
-
 .navbar_center {
   display: flex;
   flex-direction: row;
@@ -65,15 +60,10 @@
 
 @media (max-width: 768px) {
   .navbar {
-    align-items: flex-start;
+    width: 100%;
+    align-items: center;
     text-align: center;
     padding: 1rem;
-  }
-
-  .company_logo {
-    display: none;
-    margin-bottom: 1rem;
-    width: auto;
   }
 
   .navbar_center {
@@ -82,6 +72,21 @@
 
   .navbar_right {
     padding: 0;
-    margin-right: 2rem;
+  }
+
+  .hide-on-small-screen {
+    display: none;
+  }
+
+  .text-small-screen {
+    font-size: 0.8rem;
+  }
+
+  .margin-small-screen {
+    margin: 0.5rem;
+  }
+
+  .flex-start-small-screen {
+    align-items: flex-start;
   }
 }

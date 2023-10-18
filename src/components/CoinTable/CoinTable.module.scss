@@ -19,6 +19,22 @@
   color: rgba(0, 0, 0, 0.55);
 }
 
+.search_input {
+  margin-left: 5px;
+  width: 40%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    background-color: #eaeaea;
+  }
+}
+
 .crypto_table tbody tr {
   background: #fff;
   -webkit-box-shadow: 0 1px 15px 1px rgba(62, 57, 107, 0.07);
@@ -57,32 +73,45 @@
     align-items: center;
     font-size: 0.7rem;
     margin: 0;
-    border-spacing: 0 2em;
+    border-spacing: 0;
+    border-collapse: collapse;
   }
 
-  .plus_icon {
-    width: 1rem;
-    height: 1rem;
+  .search_input {
+    margin-left: 5px;
+    width: 60%;
+    padding: 2px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    font-size: 5px;
+    transition: background-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      background-color: #eaeaea;
+    }
   }
+
   .crypto_table tbody tr td img {
     width: 1rem;
     height: 1rem;
     margin-left: 4px;
   }
 
-
   .crypto_table thead th {
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 4px;
     text-align: center;
   }
+
   .crypto_table tbody tr td {
-    white-space: break-spaces;
+    padding: 4px;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
-
   }
+
   .crypto_table tbody tr {
     width: 100%;
   }
