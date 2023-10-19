@@ -3,6 +3,8 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { fetchCurrencies } from "services/utils";
 
 type CustomHookReturnType = {
+  perPage: number
+  setPerPage: Dispatch<SetStateAction<number>>;
   cryptoData: CurrencyType[];
   isLoading: boolean;
   totalPages: number;
@@ -11,6 +13,7 @@ type CustomHookReturnType = {
 }
 
 export function useCryptoData(): CustomHookReturnType {
+  const [perPage, setPerPage] = useState<number>(5);
   const [cryptoData, setCryptoData] = useState<CurrencyType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -19,7 +22,7 @@ export function useCryptoData(): CustomHookReturnType {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchCurrencies(false, 10, (currentPage - 1) * 10);
+        const data = await fetchCurrencies(false, perPage, (currentPage - 1) * perPage);
         setCryptoData(data);
         const calculatedTotalPages = Math.ceil(data.length);
         setTotalPages(calculatedTotalPages);
@@ -34,6 +37,8 @@ export function useCryptoData(): CustomHookReturnType {
   }, [currentPage]);
 
   return {
+    perPage,
+    setPerPage,
     cryptoData,
     isLoading,
     totalPages,

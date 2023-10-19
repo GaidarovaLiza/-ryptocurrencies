@@ -6,11 +6,20 @@ import { CurrencyChartPointType } from "../components/CurrencyChart/CurrencyChar
 export const api = "https://api.coincap.io/v2/";
 const assetsEndpoint = "assets";
 
+const cache: { [key: string]: CurrenciesType } = {};
+
 export const fetchCryptoAssets = async (params: { limit: number; offset: number }): Promise<CurrenciesType> => {
+  const cacheKey = JSON.stringify(params);
+
+  if (cache[cacheKey]) {
+    return cache[cacheKey];
+  }
+
   try {
     const response = await axios.get(`${api}${assetsEndpoint}`, {
       params: params
     });
+    cache[cacheKey] = response.data;
     return response.data;
   } catch (error) {
     console.error("An error occurred:", error);
@@ -22,6 +31,12 @@ export const fetchCryptoData = async ({
                                         limit,
                                         offset
                                       }: { limit: number; offset: number }): Promise<CurrenciesType> => {
+  const cacheKey = JSON.stringify(offset);
+
+  if (cache[cacheKey]) {
+    return cache[cacheKey];
+  }
+
   try {
     const response = await axios.get(`${api}${assetsEndpoint}`, {
       params: {
@@ -29,6 +44,7 @@ export const fetchCryptoData = async ({
         offset
       }
     });
+    cache[cacheKey] = response.data;
     return response.data;
   } catch (error) {
     console.error("An error occurred:", error);

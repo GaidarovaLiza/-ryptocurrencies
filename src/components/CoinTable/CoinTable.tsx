@@ -1,11 +1,12 @@
 import { Pagination } from "components/Pagination/Pagination";
 import { CurrencyTableModal } from "components/shared/currencyModal/CurrencyModal";
 import { Loader } from "components/shared/loader/Loader";
-import { ChangeEvent, memo, useMemo, useState } from "react";
+import { ChangeEvent, memo, useEffect, useMemo, useState } from "react";
 import { CurrencyType } from "services/apiTypes";
 import s from "./CoinTable.module.scss";
 import { CoinTableRow } from "./CoinTableRow/CoinTableRow";
 import { useCryptoData } from "../../pages/Main/hooks";
+import { MAX_PER_PAGE } from "./constans";
 
 export const CoinTable = memo(() => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,12 +16,20 @@ export const CoinTable = memo(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCrypto, setSelectedCrypto] = useState<CurrencyType | null>(null);
   const {
+    perPage,
+    setPerPage,
     cryptoData,
     isLoading,
     totalPages,
     currentPage,
     setCurrentPage
   } = useCryptoData();
+
+  useEffect(() => {
+    if (totalPages > 0) {
+      setPerPage(totalPages > MAX_PER_PAGE ? MAX_PER_PAGE : totalPages);
+    }
+  }, [totalPages, setPerPage]);
 
   const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -58,13 +67,13 @@ export const CoinTable = memo(() => {
   }, [filteredData, sortField, sortDirection]);
 
   const handlePrevPaginationTabClick = () => {
-    if (currentPage !== 1) {
+    if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
   const handleNextPaginationTabClick = () => {
-    if (currentPage !== totalPages) {
+    if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
   };
