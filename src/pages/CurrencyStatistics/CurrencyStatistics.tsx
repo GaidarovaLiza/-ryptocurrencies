@@ -13,7 +13,6 @@ export const CurrencyStatistics = () => {
     return <Loader />;
   }
   return (
-
     <CurrencyInfo currencyStatisticsData={currencyStatisticsData}></CurrencyInfo>
   );
 };

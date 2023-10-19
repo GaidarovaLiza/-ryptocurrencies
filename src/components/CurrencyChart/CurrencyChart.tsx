@@ -10,7 +10,7 @@ export type CurrencyChartPointType = {
 }
 
 export const CurrencyChart = () => {
-  const { currencyChartData } = useCurrencyChartData();
+  const { currencyChartData } = useCurrencyChartData()
 
   const chartComponent = useMemo(() => {
     return (

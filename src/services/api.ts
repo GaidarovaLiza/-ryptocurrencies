@@ -78,15 +78,14 @@ export function fetchDataAndUpdateState(ids: string[], setCurrentCurrencyData: (
     });
 }
 
-export async function fetchCurrencyData(id: string | null): Promise<CurrencyType> {
+export async function fetchCurrencyData(id: unknown) {
   try {
-    const response = await fetchCryptoAssets({ limit: 1, offset: 0 });
-    const currency = response?.data?.find((item: CurrencyType) => item.id === id);
-    if (currency) {
-      return currency;
-    } else {
-      throw new Error("Currency not found");
-    }
+    const response = await axios.get(`${api}${assetsEndpoint}`, {
+      params: {
+        ids: id
+      }
+    });
+    return response.data.data[0];
   } catch (error) {
     throw error;
   }

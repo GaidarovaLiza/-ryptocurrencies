@@ -25,7 +25,6 @@ export const useCurrencyStatistics = (id: string | null) => {
     async function fetchData() {
       try {
         if (id) {
-          console.log(id);
           const data = await fetchCurrencyData(id);
           setCurrencyStatisticsData(data);
         }
